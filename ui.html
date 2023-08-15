@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Nearest Postal</title>
+</head>
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+#postalCodeDiv {
+    position: absolute;
+    bottom: 250px;  
+    left: 25px;
+    background-color: rgba(0,0,0,0.7);
+    padding: 5px 10px;
+    color: white;
+    border-radius: 5px;
+}
+
+    
+</style>
+<body>
+    <div id="postalCodeDiv"></div>
+
+    <script >
+
+window.addEventListener('message', function(event) {
+    if(event.data.type === "updatePostal") {
+        document.getElementById('postalCodeDiv').innerText = "Postal: " + event.data.postal + " | Street: " + event.data.street + " | " + event.data.direction;
+    }
+});
+</script>
+</body>
+</html>
