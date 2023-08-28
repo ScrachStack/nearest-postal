@@ -1,14 +1,14 @@
 local postals = {}
 
 -- Load the postals from JSON
-Citizen.CreateThread(function()
+CreateThread(function()
     local data = LoadResourceFile(GetCurrentResourceName(), "ocrp.json")
     postals = json.decode(data)
 end)
 
-Citizen.CreateThread(function()
+CreateThread(function()
     while true do
-        Citizen.Wait(1000)
+        Wait(1000)
         
         if not IsPauseMenuActive() then
             local x, y, z = table.unpack(GetEntityCoords(PlayerPedId(), false))
