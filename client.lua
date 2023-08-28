@@ -10,24 +10,27 @@ Citizen.CreateThread(function()
     while true do
         Citizen.Wait(1000)
         
-        local x, y, z = table.unpack(GetEntityCoords(PlayerPedId(), false))
-        local heading = GetEntityHeading(PlayerPedId())
-        
-        local direction = GetCardinalDirectionFromHeading(heading)
-        
-        local nearestPostal = GetNearestPostal(x, y)
-        
-        local streetHash = GetStreetNameAtCoord(x, y, z)
-        local streetName = GetStreetNameFromHashKey(streetHash)
+        if not IsPauseMenuActive() then
+            local x, y, z = table.unpack(GetEntityCoords(PlayerPedId(), false))
+            local heading = GetEntityHeading(PlayerPedId())
+            
+            local direction = GetCardinalDirectionFromHeading(heading)
+            
+            local nearestPostal = GetNearestPostal(x, y)
+            
+            local streetHash = GetStreetNameAtCoord(x, y, z)
+            local streetName = GetStreetNameFromHashKey(streetHash)
 
-        SendNUIMessage({
-            type = "updatePostal",
-            postal = nearestPostal,
-            street = streetName,
-            direction = direction
-        })
+            SendNUIMessage({
+                type = "updatePostal",
+                postal = nearestPostal,
+                street = streetName,
+                direction = direction
+            })
+        end
     end
 end)
+
 
 function GetCardinalDirectionFromHeading(heading)
     if heading >= 337.5 or heading < 22.5 then
