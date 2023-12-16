@@ -1,20 +1,4 @@
 config = {
-    -- enables version checking (if this is enabled and there is no new version it won't display a message anyways)
-    versionCheck = true,
-
-    text = {
-        -- The text to display on-screen for the nearest postal. 
-        -- Formatted using Lua strings, http://www.lua.org/pil/20.html
-        format = '~y~Nearest Postal~w~: %s (~g~%.2fm~w~)',
-
-        -- ScriptHook PLD Position
-        --posX = 0.225,
-        --posY = 0.963,
-
-        -- vMenu PLD Position
-        posX = 0.22,
-        posY = 0.963
-    },
 
     blip = {
         -- The text to display in chat when setting a new route. 
